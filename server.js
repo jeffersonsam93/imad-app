@@ -29,7 +29,7 @@ app.get('/article2',function(req,res){
 });
 function hash(input,salt){
     var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
-    return  hashed.toString('hex');
+    return  ['pbkdf2Sync','10000',salt,hashed.toString('hex')].join("$");
 }
 app.get('/hash/:input',function(req,res){
     var hashedString=hash(req.params.input,'randomstring');
@@ -45,6 +45,25 @@ app.post('/create-user',function(req,res){
             res.status(500).send(err.toString());
         }
         else{
+            res.send("User Successfully created:"+username);
+        }
+    });
+});
+
+app.post('/login',function(req,res){
+    var username=req.body.username;
+    var password=req.body.password;
+    pool.query("SELECT * FROM userinfo where username=$1",[username],function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }
+        else{
+            if(res.rows.length===0){
+            res.send(403).send("User/password Invalid");
+            }
+            else{
+                
+            }
             res.send("User Successfully created:"+username);
         }
     });
