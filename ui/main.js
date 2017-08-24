@@ -2,8 +2,8 @@ console.log('Loaded!');
 var submitbtn=document.getElementById("submit-btn");
 submitbtn.onclick=function(){
     var request=new XMLHttpRequest();
-    var username=document.getElementById("username");
-    var password=document.getElementById("password");
+    var username=document.getElementById("username").value;
+    var password=document.getElementById("password").value;
     request.onrequeststatechange=function(){
       if(request.readyState===XMLHttpRequest.DONE){
           if(request.status===200){
