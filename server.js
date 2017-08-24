@@ -59,21 +59,21 @@ app.post('/login',function(req,res){
             res.status(500).send(err.toString());
         }
         else{
-            if(res.rows.length===0){
-            res.send(403).send("User/password Invalid");
-            }
-            else{
-                var dbString=res.rows[0].password;
-                var salt=dbstring.split('$')[2];
-                var hashedpassword=hash(password,salt);
-                if(hashedpassword===dbString){
-                    res.send("Credentials correct");
-                }
-                else{
-                     res.send("User Successfully created:"+username);
-                }
-            }
-            res.send("User Successfully created:"+username);
+            //if(res.rows.length===0){
+            //res.send(403).send("User/password Invalid");
+           // }
+           // else{
+            //    var dbString=res.rows[0].password;
+            //    var salt=dbstring.split('$')[2];
+            //    var hashedpassword=hash(password,salt);
+            //    if(hashedpassword===dbString){
+           //         res.send("Credentials correct");
+            //    }
+            //    else{
+            //         res.send("User Successfully created:"+username);
+            //    }
+           // }
+          //  res.send("User Successfully created:"+username);
         }
     });
     }
