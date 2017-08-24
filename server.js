@@ -51,6 +51,7 @@ app.post('/create-user',function(req,res){
 });
 
 app.post('/login',function(req,res){
+    try{
     var username=req.body.username;
     var password=req.body.password;
     pool.query("SELECT * FROM userinfo where username=$1",username,function(err,result){
@@ -75,6 +76,10 @@ app.post('/login',function(req,res){
             res.send("User Successfully created:"+username);
         }
     });
+    }
+    catch(ex){
+        res.send("Error"+ex);
+    }
 });
 
 app.get('/article3',function(req,res){
