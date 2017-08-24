@@ -4,7 +4,7 @@ submitbtn.onclick=function(){
     var request=new XMLHttpRequest();
     var username=document.getElementById("username").value;
     var password=document.getElementById("password").value;
-    request.onrequeststatechange=function(){
+    request.onreadystatechanged=function(){
       if(request.readyState===XMLHttpRequest.DONE){
           if(request.status===200){
               alert("logged in successfully");
