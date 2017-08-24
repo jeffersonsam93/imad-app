@@ -16,5 +16,5 @@ submitbtn.onclick=function(){
     };
     request.open("POST","http://jeffersonsam93.imad.hasura-app.io/loginpage",true);
     request.setRequestHeader('Content-Type','application/json');
-    request.send(JSON.stringify({username:username,password:password}));
+    request.send(JSON.stringify({"username":username,"password":password}));
 };
